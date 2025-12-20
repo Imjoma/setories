@@ -1,0 +1,49 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  border: 2px solid red;
+}
+
+section {
+  text-align: left;
+}
+
+.section-header {
+  margin-left: 16px;
+}
+
+.container-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 235px);
+  padding: 16px;
+  gap: 16px;
+}
+
+.card-accomplishments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.button-add-accomplishments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  resize: vertical;
+}
