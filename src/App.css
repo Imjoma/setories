@@ -23,19 +23,26 @@ section {
 .card-accomplishments {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
   padding: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  height: 300px;
+}
+
+.card-accomplishments .card-footer {
+  display: flex;
+  flex-direction: column;
 }
 
 .button-add-accomplishments {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 3rem;
   border: 1px solid #ccc;
   border-radius: 8px;
+  height: 334px;
 }
 
 textarea {

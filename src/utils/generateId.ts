@@ -1,0 +1,4 @@
+// Utils folder is for pure logic with no React features
+
+export const generateRandomString = () =>
+  Math.random().toString(36).substring(2, 7);
