@@ -1,26 +1,19 @@
 import "./App.css";
 // import AccomplishCard from "./ui/AccomplishCard";
 import { useAccomplishments } from "./hooks/useAccomplishments";
-import AddAccomplishButton from "./ui/AddAccomplishButton";
-import { useState } from "react";
+
 import AccomplishItemCard from "./ui/AccomplishItemCard";
+import AccomplishmentForm from "./ui/AccomplishmentForm";
 
 function App() {
   const {
     accomplishments,
     top7,
     handleAdd,
-    handleDelete,
+    // handleDelete,
     // handleAddToTop7
-  } = useAccomplishments([
-    { title: "Random Achievement", count: 1, id: "abcde" },
-    { title: "Random Achievement", count: 1, id: "abcde" },
-    { title: "Random Achievement", count: 1, id: "abcde" },
-    { title: "Random Achievement", count: 1, id: "abcde" },
-  ]);
+  } = useAccomplishments([]);
 
-  const [draftTitle, setDraftTitle] = useState("");
-  console.log("Draft Title:", draftTitle);
   console.log("App:", accomplishments);
 
   // 🏆🏅🎯🌟
@@ -33,30 +26,20 @@ function App() {
           <h3>Accomplishments: {accomplishments.length}</h3>
           <h3>Top 7: {top7.length}</h3>
         </div>
+        {/* Form */}
+        <AccomplishmentForm
+          handleAdd={handleAdd}
+          count={accomplishments.length}
+        />
+        {/* Grid Container */}
         <div className="container-grid">
           {accomplishments.map((accomplishment, index) => (
             <AccomplishItemCard
-              key={index}
+              key={accomplishment.id}
               index={index}
               accomplishment={accomplishment}
             />
-
-            // <AccomplishCard
-            //   key={index}
-            //   index={index}
-            //   accomplishment={accomplishment}
-            //   handleDelete={handleDelete}
-            //   handleAddToTop7={handleAddToTop7}
-            //   setDraftTitle={setDraftTitle}
-            // />
           ))}
-          <AddAccomplishButton
-            accomplishments={accomplishments}
-            handleAdd={handleAdd}
-            handleDelete={handleDelete}
-            draftTitle={draftTitle}
-            setDraftTitle={setDraftTitle}
-          />
         </div>
       </section>
     </div>

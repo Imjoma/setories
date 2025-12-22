@@ -4,10 +4,11 @@ type CustomCardProps = Pick<AccomplishCardProps, "index" | "accomplishment">;
 
 const AccomplishCard = ({ index, accomplishment }: CustomCardProps) => {
   return (
-    <div key={accomplishment.id} className="card-accomplishments">
+    <div className="card-accomplishments">
       <h4>{accomplishment?.title}</h4>
       <div className="card-footer">
-        <span>({index})</span>
+        <span>(Index: {index})</span>
+        <span>(Count: {accomplishment.count})</span>
         <span>({accomplishment.id})</span>
       </div>
     </div>

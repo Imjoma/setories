@@ -27,8 +27,7 @@ export function useAccomplishments(initial: Accomplishment[]) {
   };
 
   const handleAdd = (item: Accomplishment) => {
-    const templateCard = { title: "", count: 1, id: "abcde" };
-    setAccomplishments((prev) => [...prev, item, templateCard]);
+    setAccomplishments((prev) => [item, ...prev]);
   };
 
   return {
