@@ -32,10 +32,17 @@ section {
 
 .card-accomplishments .card-footer {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.card-accomplishments .card-footer .card-footer-info {
+  display: flex;
   flex-direction: column;
 }
 
-.button-add-accomplishments {
+.card-accomplishments .card-footer .button-add-accomplishments {
   display: flex;
   justify-content: center;
   align-items: center;

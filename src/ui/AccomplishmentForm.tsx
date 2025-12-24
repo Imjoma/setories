@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import type { AccomplishCardProps } from "../types/accomplishment";
 import { generateRandomString } from "../utils/generateId";
 
@@ -8,6 +8,7 @@ type CustomProps = Pick<AccomplishCardProps, "handleAdd"> & {
 
 const AccomplishmentForm = ({ handleAdd, count }: CustomProps) => {
   const [title, setTitle] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,6 +23,8 @@ const AccomplishmentForm = ({ handleAdd, count }: CustomProps) => {
       });
     }
 
+    inputRef.current?.focus();
+
     setTitle("");
   };
   return (
@@ -31,6 +34,7 @@ const AccomplishmentForm = ({ handleAdd, count }: CustomProps) => {
         placeholder="🌟 You shine bright that time..."
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        ref={inputRef}
       />
 
       <button type="submit">+</button>

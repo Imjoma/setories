@@ -6,13 +6,8 @@ import AccomplishItemCard from "./ui/AccomplishItemCard";
 import AccomplishmentForm from "./ui/AccomplishmentForm";
 
 function App() {
-  const {
-    accomplishments,
-    top7,
-    handleAdd,
-    // handleDelete,
-    // handleAddToTop7
-  } = useAccomplishments([]);
+  const { accomplishments, top7, handleAdd, handleDelete, handleAddToTop7 } =
+    useAccomplishments([]);
 
   console.log("App:", accomplishments);
 
@@ -38,6 +33,8 @@ function App() {
               key={accomplishment.id}
               index={index}
               accomplishment={accomplishment}
+              handleDelete={handleDelete}
+              handleAddToTop7={handleAddToTop7}
             />
           ))}
         </div>

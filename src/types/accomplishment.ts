@@ -11,5 +11,5 @@ export interface AccomplishCardProps {
   accomplishment: Accomplishment;
   handleDelete: (id: string) => void;
   handleAddToTop7: (id: string) => void;
-  handleAdd?: (accomplishment: Accomplishment) => void;
+  handleAdd: (accomplishment: Accomplishment) => void;
 }
