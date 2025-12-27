@@ -20,6 +20,7 @@ const AccomplishItemCard = ({
           <span>(Count: {accomplishment.count})</span>
           <span>({accomplishment.id})</span>
         </div>
+
         <div className="card-footer-actions">
           <button onClick={() => handleAddToTop7(accomplishment.id)}>
             Add

@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import type { AccomplishCardProps } from "../types/accomplishment";
 import { generateRandomString } from "../utils/generateId";
+import { isMax } from "../utils/isMax";
 
 type CustomProps = Pick<AccomplishCardProps, "handleAdd"> & {
   count: number;
@@ -13,6 +14,7 @@ const AccomplishmentForm = ({ handleAdd, count }: CustomProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (isMax(count, 20)) return;
     if (!title.trim()) return;
 
     if (handleAdd) {

@@ -26,6 +26,7 @@ function App() {
           handleAdd={handleAdd}
           count={accomplishments.length}
         />
+
         {/* Grid Container */}
         <div className="container-grid">
           {accomplishments.map((accomplishment, index) => (
