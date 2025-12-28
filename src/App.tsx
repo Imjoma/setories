@@ -42,7 +42,7 @@ function App() {
         </div>
 
         {/* Ranking */}
-        <RankingCanvas />
+        <RankingCanvas rankingItems={accomplishments} />
       </section>
     </div>
   );
