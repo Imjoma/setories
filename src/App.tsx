@@ -4,6 +4,7 @@ import { useAccomplishments } from "./hooks/useAccomplishments";
 
 import AccomplishItemCard from "./ui/AccomplishItemCard";
 import AccomplishmentForm from "./ui/AccomplishmentForm";
+import RankingCanvas from "./ui/ranking/RankingCanvas";
 
 function App() {
   const { accomplishments, top7, handleAdd, handleDelete, handleAddToTop7 } =
@@ -15,7 +16,7 @@ function App() {
   return (
     <div>
       <h1>Setories</h1>
-
+      Write down - Rank - Pick - Explain - Potential career
       <section id="accomplishments">
         <div className="section-header">
           <h3>Accomplishments: {accomplishments.length}</h3>
@@ -39,6 +40,9 @@ function App() {
             />
           ))}
         </div>
+
+        {/* Ranking */}
+        <RankingCanvas />
       </section>
     </div>
   );
