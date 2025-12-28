@@ -27,6 +27,7 @@ section {
   padding: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  width: 200px;
   height: 300px;
 }
 

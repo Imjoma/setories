@@ -4,6 +4,7 @@ export type Accomplishment = {
   title: string;
   count: number;
   id: string;
+  likelihood?: number;
 };
 
 export interface AccomplishCardProps {

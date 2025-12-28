@@ -1,8 +1,7 @@
 import useToggler from "../../hooks/useToggler";
 import useCount from "../../hooks/useCount";
-import AccomplishItemCard from "../AccomplishItemCard";
-import { useAccomplishments } from "../../hooks/useAccomplishments";
 import type { Accomplishment } from "../../types/accomplishment";
+import DisplayAccomplishCard from "../DisplayAccomplishCard";
 
 type RankingCanvasProps = {
   rankingItems: Accomplishment[];
@@ -10,15 +9,12 @@ type RankingCanvasProps = {
 
 const RankingCanvas = ({ rankingItems }: RankingCanvasProps) => {
   const [value, toggleValue] = useToggler(false);
-  const { accomplishments, handleDelete, handleAddToTop7 } = useAccomplishments(
-    []
-  );
   const [count, increment, decrement] = useCount(
     0,
     Math.max(0, rankingItems.length - 1)
   );
 
-  console.log("RankingCanvas:", accomplishments);
+  console.log("RankingCanvas:", rankingItems);
 
   if (!value)
     return <button onClick={() => toggleValue(true)}>Start ranking</button>;
@@ -29,15 +25,11 @@ const RankingCanvas = ({ rankingItems }: RankingCanvasProps) => {
         <div className="ranking-body">
           {/* Change this to DisplayAccomplishCard */}
           {/* make the size of the AccomplishCards explicit */}
-          <div className="container-grid">
-            <AccomplishItemCard
-              key={rankingItems[count].id}
-              index={rankingItems[count].count}
-              accomplishment={rankingItems[count]}
-              handleDelete={handleDelete}
-              handleAddToTop7={handleAddToTop7}
-            />
-          </div>
+
+          <DisplayAccomplishCard
+            key={rankingItems[count].id}
+            accomplishment={rankingItems[count]}
+          />
         </div>
         <div className="ranking-footer">
           <button onClick={() => decrement()}>-</button>
