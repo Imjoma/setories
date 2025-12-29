@@ -22,6 +22,7 @@ const AccomplishmentForm = ({ handleAdd, count }: CustomProps) => {
         title: title,
         count: count,
         id: generateRandomString(),
+        likelihood: 0,
       });
     }
 
