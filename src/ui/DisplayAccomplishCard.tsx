@@ -1,62 +1,19 @@
+import useIntervalCounting from "../hooks/useIntervalCounting";
 import type { Accomplishment } from "../types/accomplishment";
-
-import { useRef } from "react";
 
 type CustomCardProps = {
   accomplishment: Accomplishment;
-  setLike: (value: number) => void;
+  // setLike has a number value or parameter that has a type value returning a number; and returns void
+  setLike: (value: number | ((prev: number) => number)) => void;
   like: number;
 };
 const DisplayAccomplishCard = ({
-  accomplishment,
-  like,
   setLike,
+  like,
+  accomplishment,
 }: CustomCardProps) => {
-  // const [like, setLike] = useState(0);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  //   Like
-  const startIncrementing = () => {
-    setLike((prev) => {
-      if (prev >= 100) return prev;
-      return prev + 1;
-    });
-
-    timerRef.current = setInterval(() => {
-      setLike((prev) => {
-        if (prev >= 100) {
-          if (timerRef.current) clearInterval(timerRef.current);
-          return 100;
-        }
-        return prev + 1;
-      });
-    }, 30);
-  };
-
-  const stopIncrementing = () => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-  };
-
-  // Dislike
-  const startDecrementing = () => {
-    setLike((prev) => {
-      if (prev <= 0) return prev;
-      return prev - 1;
-    });
-
-    timerRef.current = setInterval(() => {
-      setLike((prev) => {
-        if (prev <= 0) {
-          if (timerRef.current) clearInterval(timerRef.current);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 30);
-  };
+  const { startIncrementing, startDecrementing, stopInterval } =
+    useIntervalCounting(setLike);
 
   return (
     <>
@@ -73,25 +30,25 @@ const DisplayAccomplishCard = ({
             {like}
             <button
               onMouseDown={startIncrementing}
-              onMouseUp={stopIncrementing}
-              onMouseLeave={stopIncrementing}
+              onMouseUp={stopInterval}
+              onMouseLeave={stopInterval}
               onTouchStart={(e) => {
                 e.preventDefault();
                 startIncrementing();
               }}
-              onTouchEnd={stopIncrementing}
+              onTouchEnd={stopInterval}
             >
               👍
             </button>
             <button
               onMouseDown={startDecrementing}
-              onMouseUp={stopIncrementing}
-              onMouseLeave={stopIncrementing}
+              onMouseUp={stopInterval}
+              onMouseLeave={stopInterval}
               onTouchStart={(e) => {
                 e.preventDefault();
                 startDecrementing();
               }}
-              onTouchEnd={stopIncrementing}
+              onTouchEnd={stopInterval}
             >
               👎
             </button>

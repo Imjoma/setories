@@ -5,19 +5,20 @@ import DisplayAccomplishCard from "../DisplayAccomplishCard";
 import RankingActions from "./RankingActions";
 import { useState } from "react";
 
-type RankingCanvasProps = {
+const RankingCanvas = ({
+  rankingItems,
+}: {
   rankingItems: Accomplishment[];
-};
-
-const RankingCanvas = ({ rankingItems }: RankingCanvasProps) => {
+}) => {
   const [value, toggleValue] = useToggler(false);
-  const [count, increment, decrement] = useCount(
-    0,
-    Math.max(0, rankingItems.length - 1)
-  );
+  // for card navigation
+  const [count, increment, decrement] = useCount(0, rankingItems.length);
+  // for card sorting
+  const [ranking, setRanking] = useState([]);
+  // for card liking
   const [like, setLike] = useState(0);
 
-  // 🚨 To avoid verbose, will create an array of objects of id and likeCounts instead
+  // ✔️ To avoid verbose, will create an array of objects of id and likeCounts instead
   // [{id: string, likeCounts: number}]
   // will match the likeCounts to the current card easily
 
@@ -27,6 +28,10 @@ const RankingCanvas = ({ rankingItems }: RankingCanvasProps) => {
   return (
     <div onClick={() => toggleValue(false)} className="ranking-background">
       <div onClick={(e) => e.stopPropagation()} className="ranking-container">
+        <div className="ranking-header">
+          Original: {JSON.stringify(rankingItems)}
+        </div>
+        <div className="ranking-header">New: {JSON.stringify(ranking)}</div>
         <div className="ranking-body">
           {/* Change this to DisplayAccomplishCard */}
           {/* make the size of the AccomplishCards explicit */}
@@ -41,12 +46,11 @@ const RankingCanvas = ({ rankingItems }: RankingCanvasProps) => {
         <RankingActions
           totalItems={rankingItems}
           maxItems={rankingItems.length - 1}
-          count={count}
-          increment={increment}
-          decrement={decrement}
-          currentLikeCounts={like}
-          setLike={setLike}
           curentCardItem={rankingItems[count]}
+          count={count}
+          navigateNext={increment}
+          navigatePrev={decrement}
+          likeCounts={like}
         />
       </div>
     </div>

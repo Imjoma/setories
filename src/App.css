@@ -64,13 +64,20 @@ textarea {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.ranking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1rem;
+}
+
 .ranking-container {
   background-color: #f3f3f3;
   position: fixed;
   bottom: 0;
   left: 0;
   height: 90%;
-  width: 100%;
+  width: calc(100vw - 4rem);
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   padding-inline: 2rem;

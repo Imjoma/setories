@@ -1,28 +1,26 @@
-import type { Accomplishment } from "../types/accomplishment";
+import type { Accomplishment } from "../../types/accomplishment";
 
 type RankingActionsProps = {
   // Accomplishment Cards info
   totalItems: Accomplishment[];
   curentCardItem: Accomplishment;
   maxItems: number;
-  //   Next and Back Card
+  //   Card Navigation
   count: number;
-  decrement: () => void;
-  increment: () => void;
+  navigateNext: () => void;
+  navigatePrev: () => void;
   //   Saving Likes
-  currentLikeCounts: number;
-  setLike: (value: number) => void;
+  likeCounts: number;
 };
 
 const RankingActions = ({
   totalItems,
   maxItems,
   count,
-  decrement,
-  increment,
-  currentLikeCounts,
+  navigateNext,
+  navigatePrev,
+  likeCounts,
   curentCardItem,
-  setLike,
 }: RankingActionsProps) => {
   const isFirstItem = count === 0 ? true : false;
   const isLastItem = count >= maxItems ? true : false;
@@ -43,23 +41,15 @@ const RankingActions = ({
     console.log("Total Items:", totalItems);
     console.log("Curent Item:", accomplishmentItem);
 
-    if (isItemFound) {
-      isItemFound.likelihood = currentLikeCounts;
-    }
     // Moves to the next card
-    increment();
-    console.log(currentLikeCounts);
+    navigateNext();
+    console.log(likeCounts);
     console.log("The previous item state:", accomplishmentItem);
     //  Reset the like counts from the parent element RankingCanvas
-    setLike(0);
   };
 
   const handleBack = () => {
-    if (isItemFound.likelihood !== 0) {
-      setLike(isItemFound.likelihood);
-    }
-
-    decrement();
+    navigatePrev();
     console.log("The previous item state:", isItemFound);
   };
 

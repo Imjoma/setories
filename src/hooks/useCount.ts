@@ -6,7 +6,7 @@ const useCount = (initial: number, maxValue: number): UseCountReturn => {
   const [count, setCount] = useState<number>(initial);
 
   const increment = () => {
-    if (count >= maxValue) return;
+    if (count >= Math.max(0, maxValue - 1)) return;
     setCount((prev) => prev + 1);
   };
 
