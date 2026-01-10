@@ -13,7 +13,7 @@ section {
   margin-left: 16px;
 }
 
-.container-grid {
+/* .container-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, 235px);
   padding: 16px;
@@ -29,7 +29,7 @@ section {
   border-radius: 8px;
   width: 200px;
   height: 300px;
-}
+} */
 
 .card-accomplishments .card-footer {
   display: flex;

@@ -30,11 +30,27 @@ export function useAccomplishments(initial: Accomplishment[]) {
     setAccomplishments((prev) => [item, ...prev]);
   };
 
+  const moveUp = (index: number) => {
+    if (index === 0) return;
+    const newArr = [...accomplishments];
+    [newArr[index], newArr[index - 1]] = [newArr[index - 1], newArr[index]];
+    setAccomplishments(newArr);
+  };
+
+  const moveDown = (index: number) => {
+    if (index === accomplishments.length - 1) return;
+    const newArr = [...accomplishments];
+    [newArr[index], newArr[index + 1]] = [newArr[index + 1], newArr[index]];
+    setAccomplishments(newArr);
+  };
+
   return {
     accomplishments,
     top7,
     handleAdd,
     handleDelete,
     handleAddToTop7,
+    moveUp,
+    moveDown,
   };
 }

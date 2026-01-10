@@ -2,7 +2,12 @@ import type { AccomplishCardProps } from "../types/accomplishment";
 
 type CustomCardProps = Pick<
   AccomplishCardProps,
-  "index" | "accomplishment" | "handleDelete" | "handleAddToTop7"
+  | "index"
+  | "accomplishment"
+  | "handleDelete"
+  | "handleAddToTop7"
+  | "moveUp"
+  | "moveDown"
 >;
 
 const AccomplishItemCard = ({
@@ -10,6 +15,8 @@ const AccomplishItemCard = ({
   accomplishment,
   handleDelete,
   handleAddToTop7,
+  moveUp,
+  moveDown,
 }: CustomCardProps) => {
   return (
     <div className="card-accomplishments">
@@ -28,6 +35,11 @@ const AccomplishItemCard = ({
           <button onClick={() => handleDelete(accomplishment.id)}>
             Delete
           </button>
+        </div>
+
+        <div className="card-footer-actions">
+          <button onClick={() => moveUp(index)}>🔼</button>
+          <button onClick={() => moveDown(index)}>🔽</button>
         </div>
       </div>
     </div>
